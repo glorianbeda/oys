@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final Presentation Otsuka Young Star</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+        .slide {
+            width: 1920px;
+            height: 1080px;
+            position: relative;
+            background: linear-gradient(135deg, #0a192f 0%, #172a45 40%, #1e3a8a 70%, #0f172a 100%);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .shape-1 {
+            position: absolute;
+            width: 750px;
+            height: 750px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(51, 154, 240, 0.2) 0%, rgba(51, 154, 240, 0) 70%);
+            filter: blur(60px);
+            top: -150px;
+            right: -150px;
+            z-index: 1;
+        }
+        .shape-2 {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(116, 192, 252, 0.15) 0%, rgba(116, 192, 252, 0) 70%);
+            filter: blur(45px);
+            bottom: -75px;
+            left: -150px;
+            z-index: 1;
+        }
+        .shape-3 {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(51, 154, 240, 0.1) 0%, rgba(51, 154, 240, 0) 70%);
+            filter: blur(30px);
+            top: 50%;
+            left: 10%;
+            z-index: 1;
+        }
+        .content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 100px;
+            width: 100%;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 36px;
+            padding: 90px 120px;
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 48px 0 rgba(0, 0, 0, 0.37);
+            max-width: 1350px;
+            width: 100%;
+        }
+        .title {
+            font-size: 96px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 30px;
+            line-height: 1.2;
+            text-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+        }
+        .subtitle {
+            font-size: 36px;
+            font-weight: 500;
+            color: #a5d8ff;
+            margin-bottom: 45px;
+        }
+        .role {
+            font-size: 30px;
+            color: #74c0fc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        .material-icons {
+            font-size: 36px;
+        }
+        .accent-line {
+            width: 180px;
+            height: 6px;
+            background: linear-gradient(90deg, #339af0, #74c0fc);
+            margin: 30px auto;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="shape-1"></div>
+        <div class="shape-2"></div>
+        <div class="shape-3"></div>
+        <div class="content">
+            <div class="glass-panel">
+                <h1 class="title">Final Presentation Otsuka Young Star</h1>
+                <div class="accent-line"></div>
+                <h2 class="subtitle">Engineering Department</h2>
+                <div class="role">
+                    <i class="material-icons">code</i>
+                    <span>Web Developer</span>
+                </div>
+        </div>
+    </div>
+    <style>
+      .nav-button {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: rgba(51, 154, 240, 0.2);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(51, 154, 240, 0.3);
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 100;
+        text-decoration: none;
+      }
+      .nav-button:hover {
+        background: rgba(51, 154, 240, 0.4);
+        transform: scale(1.1);
+      }
+      .nav-button i {
+        color: white;
+        font-size: 32px;
+      }
+    </style>
+    <a href="02-introduction.html" class="nav-button">
+      <i class="material-icons">arrow_forward</i>
+    </a>
+</body>
+</html>

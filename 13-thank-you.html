@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>13 - Thank You Slide</title>
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- Reset & Base Styles -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #000;
+        color: white;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .custom-slide {
+        width: 1920px;
+        height: 1080px; /* Force 16:9 like Reveal.js */
+        position: relative;
+        background: linear-gradient(
+          135deg,
+          #0a192f 0%,
+          #172a45 40%,
+          #1e3a8a 70%,
+          #0f172a 100%
+        );
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Shapes from Main Theme */
+      .shape-1 {
+        position: absolute;
+        width: 750px;
+        height: 750px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(51, 154, 240, 0.2) 0%,
+          rgba(51, 154, 240, 0) 70%
+        );
+        filter: blur(60px);
+        top: -150px;
+        right: -150px;
+        z-index: 1;
+      }
+      .shape-2 {
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(116, 192, 252, 0.15) 0%,
+          rgba(116, 192, 252, 0) 70%
+        );
+        filter: blur(45px);
+        bottom: -75px;
+        left: -150px;
+        z-index: 1;
+      }
+      .shape-3 {
+        position: absolute;
+        width: 450px;
+        height: 450px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(51, 154, 240, 0.1) 0%,
+          rgba(51, 154, 240, 0) 70%
+        );
+        filter: blur(30px);
+        top: 50%;
+        left: 10%;
+        z-index: 1;
+      }
+
+      .content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 100px;
+      }
+
+      .glass-panel-title {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(15px);
+        border-radius: 36px;
+        padding: 60px 80px;
+        border: 1.5px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 12px 48px 0 rgba(0, 0, 0, 0.37);
+        max-width: 1350px;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Thank You Specific Styles */
+      .title-large {
+        font-size: 80px !important;
+        font-weight: 700;
+        margin-bottom: 40px;
+        background: linear-gradient(135deg, #fff, #a5d8ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        line-height: 1.2;
+      }
+
+      .subtitle {
+        font-size: 36px;
+        color: #e7f5ff;
+        line-height: 1.6;
+        margin-bottom: 60px;
+        max-width: 1000px;
+        font-weight: 300;
+        font-style: italic;
+      }
+
+      .goodbye-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #339af0, #1c7ed6);
+        color: #ffffff;
+        font-size: 28px;
+        font-weight: 800; /* Extra bold */
+        padding: 20px 60px;
+        border-radius: 50px;
+        text-decoration: none;
+        box-shadow: 0 10px 25px rgba(51, 154, 240, 0.5);
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* improved text contrast */
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        cursor: pointer;
+      }
+      .goodbye-btn:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 20px 40px rgba(51, 154, 240, 0.7);
+        background: linear-gradient(135deg, #4dabf7, #228be6);
+      }
+      .goodbye-btn:active {
+        transform: translateY(2px);
+      }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+      function triggerConfetti(event) {
+        if (event) event.preventDefault();
+
+        const duration = 15 * 1000;
+        const animationEnd = Date.now() + duration;
+        const defaults = {
+          startVelocity: 30,
+          spread: 360,
+          ticks: 60,
+          zIndex: 9999,
+        };
+
+        function random(min, max) {
+          return Math.random() * (max - min) + min;
+        }
+
+        // Initial Burst
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+          colors: ["#339af0", "#fab005", "#ffffff"],
+          zIndex: 9999,
+        });
+
+        // Continuous random bursts
+        const interval = setInterval(function () {
+          const timeLeft = animationEnd - Date.now();
+
+          if (timeLeft <= 0) {
+            return clearInterval(interval);
+          }
+
+          const particleCount = 50 * (timeLeft / duration);
+
+          confetti(
+            Object.assign({}, defaults, {
+              particleCount,
+              origin: { x: random(0.1, 0.3), y: Math.random() - 0.2 },
+            }),
+          );
+          confetti(
+            Object.assign({}, defaults, {
+              particleCount,
+              origin: { x: random(0.7, 0.9), y: Math.random() - 0.2 },
+            }),
+          );
+        }, 250);
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const btn = document.querySelector(".goodbye-btn");
+        if (btn) btn.onclick = triggerConfetti;
+      });
+    </script>
+  </head>
+  <body>
+    <div class="custom-slide">
+      <div class="shape-1"></div>
+      <div class="shape-2"></div>
+      <div class="shape-3"></div>
+      <div class="content">
+        <div class="glass-panel-title">
+          <h1 class="title-large">Thank You</h1>
+
+          <p class="subtitle">
+            "Thank you for the invaluable experience and learning provided by my
+            mentors and all Amerta Indah Otsuka employees.<br /><br />
+            I sincerely apologize for any shortcomings or mistakes I may have
+            made during this journey."
+          </p>
+
+          <!-- In standalone file, let's make the button link back to index/start -->
+          <a href="javascript:void(0);" class="goodbye-btn">Goodbye</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

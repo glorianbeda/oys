@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inspection & Corrective Schedule Revamp</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        overflow: hidden;
+      }
+      .slide {
+        width: 1920px;
+        min-height: 1080px;
+        position: relative;
+        background: linear-gradient(
+          135deg,
+          #0a192f 0%,
+          #172a45 40%,
+          #1e3a8a 70%,
+          #0f172a 100%
+        );
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      .shape-1 {
+        position: absolute;
+        width: 750px;
+        height: 750px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(51, 154, 240, 0.2) 0%,
+          rgba(51, 154, 240, 0) 70%
+        );
+        filter: blur(60px);
+        top: -150px;
+        right: -150px;
+        z-index: 1;
+      }
+      .shape-2 {
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(116, 192, 252, 0.15) 0%,
+          rgba(116, 192, 252, 0) 70%
+        );
+        filter: blur(45px);
+        bottom: -75px;
+        left: -150px;
+        z-index: 1;
+      }
+      .shape-3 {
+        position: absolute;
+        width: 450px;
+        height: 450px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(51, 154, 240, 0.1) 0%,
+          rgba(51, 154, 240, 0) 70%
+        );
+        filter: blur(30px);
+        top: 50%;
+        left: 10%;
+        z-index: 1;
+      }
+      .content {
+        position: relative;
+        z-index: 2;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 75px 105px;
+      }
+      .title {
+        font-size: 60px;
+        font-weight: 600;
+        color: #ffffff;
+        margin-bottom: 60px;
+        position: relative;
+        display: inline-block;
+      }
+      .title::after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 0;
+        width: 120px;
+        height: 6px;
+        background: linear-gradient(90deg, #339af0, #74c0fc);
+        border-radius: 3px;
+      }
+      .tech-container {
+        display: flex;
+        gap: 45px;
+        flex-grow: 1;
+      }
+      .tech-stack {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+      .gopro-highlight {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(15px);
+        border-radius: 36px;
+        padding: 45px;
+        border: 1.5px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 12px 48px 0 rgba(0, 0, 0, 0.37);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      .panel-title {
+        font-size: 36px;
+        font-weight: 600;
+        color: #ffffff;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .tech-categories {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        flex-grow: 1;
+      }
+      .tech-category {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .tech-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+      .tech-item {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+        padding: 12px 24px;
+        color: #a5d8ff;
+        font-size: 24px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        border: 1.5px solid rgba(255, 255, 255, 0.1);
+      }
+      .gopro-content {
+        display: flex;
+        flex-direction: column;
+        gap: 38px;
+        flex-grow: 1;
+      }
+      .gopro-header {
+        display: flex;
+        align-items: center;
+        gap: 23px;
+      }
+      .gopro-logo {
+        width: 90px;
+        height: 90px;
+        background: linear-gradient(135deg, #339af0, #74c0fc);
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+      }
+      .gopro-logo i {
+        font-size: 48px;
+      }
+      .gopro-title {
+        font-size: 42px;
+        font-weight: 600;
+        color: #ffffff;
+      }
+      .gopro-features {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+      .feature-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 18px;
+      }
+      .feature-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: rgba(51, 154, 240, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .feature-icon i {
+        color: #339af0;
+        font-size: 30px;
+      }
+      .feature-text {
+        color: #a5d8ff;
+        font-size: 24px;
+      }
+      .feature-title {
+        font-size: 27px;
+        font-weight: 500;
+        color: #ffffff;
+        margin-bottom: 8px;
+      }
+      .image-card {
+        padding: 0 !important;
+        overflow: hidden;
+        flex: 1;
+        min-height: 400px;
+        display: block !important;
+      }
+      .image-card img {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        object-fit: cover;
+        display: block;
+        border: none !important;
+        box-shadow: none !important;
+        background: none !important;
+        margin: 0 !important;
+      }
+      .details-card,
+      .tech-card {
+        flex: 0 0 auto;
+      }
+      .features-card {
+        flex: 1;
+      }
+      .nav-button {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: rgba(51, 154, 240, 0.2);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(51, 154, 240, 0.3);
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 100;
+        text-decoration: none;
+      }
+      .nav-button:hover {
+        background: rgba(51, 154, 240, 0.4);
+        transform: scale(1.1);
+      }
+      .nav-button i {
+        color: white;
+        font-size: 32px;
+      }
+      .nav-button.prev {
+        right: 110px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide">
+      <div class="shape-1"></div>
+      <div class="shape-2"></div>
+      <div class="shape-3"></div>
+      <div class="content">
+        <h1 class="title">Inspection & Corrective Schedule</h1>
+        <div class="tech-container">
+          <!-- Left Column -->
+          <div class="tech-stack">
+            <!-- Card 1: Project Overview -->
+            <div class="glass-panel details-card">
+              <h2 class="panel-title">
+                <i class="material-icons">info</i>
+                <span>Project Overview</span>
+              </h2>
+              <div class="tech-categories">
+                <div class="tech-category">
+                  <div class="tech-items">
+                    <div class="tech-item">Engineering</div>
+                    <div class="tech-item">Maintenance System</div>
+                    <div class="tech-item">10 Nov 2025 - 28 Nov 2025</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Card 2: Hero Image -->
+            <div class="glass-panel image-card">
+              <img
+                src="images/inspection-revamp/Screenshot 2025-11-20 085209.png"
+                alt="Inspection Revamp Dashboard"
+                style="object-position: top"
+              />
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div class="gopro-highlight">
+            <!-- Card 3: System Capabilities -->
+            <div class="glass-panel features-card">
+              <div class="gopro-content">
+                <div class="gopro-header">
+                  <div class="gopro-logo">
+                    <i class="material-icons">task_alt</i>
+                  </div>
+                  <h2 class="gopro-title">System Capabilities</h2>
+                </div>
+                <div class="gopro-features">
+                  <div class="feature-item">
+                    <div class="feature-icon">
+                      <i class="material-icons">palette</i>
+                    </div>
+                    <div class="feature-text">
+                      <div class="feature-title">UI & UX Revamp</div>
+                      Complete visual redesign of transaction and activity
+                      creation flows.
+                    </div>
+                  </div>
+                  <div class="feature-item">
+                    <div class="feature-icon">
+                      <i class="material-icons">mail_outline</i>
+                    </div>
+                    <div class="feature-text">
+                      <div class="feature-title">PIC Email Notifications</div>
+                      Automated schedule reminders sent directly to the assigned
+                      PIC via email.
+                    </div>
+                  </div>
+                  <div class="feature-item">
+                    <div class="feature-icon">
+                      <i class="material-icons">analytics</i>
+                    </div>
+                    <div class="feature-text">
+                      <div class="feature-title">
+                        Calibration Analytics Dashboard
+                      </div>
+                      Visual monitoring for calibration-category transactions.
+                    </div>
+                  </div>
+                  <div class="feature-item">
+                    <div class="feature-icon">
+                      <i class="material-icons">assignment</i>
+                    </div>
+                    <div class="feature-text">
+                      <div class="feature-title">Digital Calibration Forms</div>
+                      Streamlined digital forms for calibration certificates and
+                      reports.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Card 4: Tech Stack -->
+            <div class="glass-panel tech-card">
+              <h2 class="panel-title">
+                <i class="material-icons">layers</i>
+                <span>Technology Stack</span>
+              </h2>
+              <div class="tech-items">
+                <div class="tech-item">React</div>
+                <div class="tech-item">TypeScript</div>
+                <div class="tech-item">Node.js</div>
+                <div class="tech-item">ApexCharts</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="06-power-quality.html" class="nav-button prev">
+      <i class="material-icons">arrow_back</i>
+    </a>
+    <a href="08-audit-trail.html" class="nav-button">
+      <i class="material-icons">arrow_forward</i>
+    </a>
+  </body>
+</html>

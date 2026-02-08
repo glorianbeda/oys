@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Global TechStack in Engineering Department</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        overflow: hidden;
+      }
+      .slide {
+        width: 1920px;
+        min-height: 1080px;
+        position: relative;
+        background: linear-gradient(
+          135deg,
+          #0a192f 0%,
+          #172a45 40%,
+          #1e3a8a 70%,
+          #0f172a 100%
+        );
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      .shape-1 {
+        position: absolute;
+        width: 750px;
+        height: 750px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(51, 154, 240, 0.2) 0%,
+          rgba(51, 154, 240, 0) 70%
+        );
+        filter: blur(60px);
+        top: -150px;
+        right: -150px;
+        z-index: 1;
+      }
+      .shape-2 {
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(116, 192, 252, 0.15) 0%,
+          rgba(116, 192, 252, 0) 70%
+        );
+        filter: blur(45px);
+        bottom: -75px;
+        left: -150px;
+        z-index: 1;
+      }
+      .shape-3 {
+        position: absolute;
+        width: 450px;
+        height: 450px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(51, 154, 240, 0.1) 0%,
+          rgba(51, 154, 240, 0) 70%
+        );
+        filter: blur(30px);
+        top: 50%;
+        left: 10%;
+        z-index: 1;
+      }
+      .content {
+        position: relative;
+        z-index: 2;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 75px 105px;
+      }
+      .title {
+        font-size: 60px;
+        font-weight: 600;
+        color: #ffffff;
+        margin-bottom: 60px;
+        position: relative;
+        display: inline-block;
+      }
+      .title::after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 0;
+        width: 120px;
+        height: 6px;
+        background: linear-gradient(90deg, #339af0, #74c0fc);
+        border-radius: 3px;
+      }
+      .tech-container {
+        display: flex;
+        gap: 45px;
+        flex-grow: 1;
+      }
+      .tech-stack {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+      .gopro-highlight {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(15px);
+        border-radius: 36px;
+        padding: 45px;
+        border: 1.5px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 12px 48px 0 rgba(0, 0, 0, 0.37);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      .panel-title {
+        font-size: 36px;
+        font-weight: 600;
+        color: #ffffff;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      .tech-categories {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        flex-grow: 1;
+      }
+      .tech-category {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      .category-title {
+        font-size: 30px;
+        font-weight: 500;
+        color: #a5d8ff;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .tech-items {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+      .tech-item {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+        padding: 12px 24px;
+        color: #a5d8ff;
+        font-size: 24px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        border: 1.5px solid rgba(255, 255, 255, 0.1);
+      }
+      .gopro-content {
+        display: flex;
+        flex-direction: column;
+        gap: 38px;
+        flex-grow: 1;
+      }
+      .gopro-header {
+        display: flex;
+        align-items: center;
+        gap: 23px;
+      }
+      .gopro-logo {
+        width: 90px;
+        height: 90px;
+        background: linear-gradient(135deg, #339af0, #74c0fc);
+        border-radius: 23px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 42px;
+        font-weight: 700;
+        color: white;
+      }
+      .gopro-title {
+        font-size: 42px;
+        font-weight: 600;
+        color: #ffffff;
+      }
+      .gopro-features {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+      .feature-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 18px;
+      }
+      .feature-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: rgba(51, 154, 240, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .feature-icon i {
+        color: #339af0;
+        font-size: 30px;
+      }
+      .feature-text {
+        color: #a5d8ff;
+        font-size: 24px;
+      }
+      .feature-title {
+        font-size: 27px;
+        font-weight: 500;
+        color: #ffffff;
+        margin-bottom: 8px;
+      }
+      .gopro-stats {
+        display: flex;
+        justify-content: space-between;
+        margin-top: auto;
+        padding-top: 30px;
+      }
+      .stat-item {
+        text-align: center;
+      }
+      .stat-value {
+        font-size: 48px;
+        font-weight: 700;
+        color: #339af0;
+        margin-bottom: 8px;
+      }
+      .stat-label {
+        font-size: 21px;
+        color: #74c0fc;
+      }
+      .nav-button {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: rgba(51, 154, 240, 0.2);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(51, 154, 240, 0.3);
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 100;
+        text-decoration: none;
+      }
+      .nav-button:hover {
+        background: rgba(51, 154, 240, 0.4);
+        transform: scale(1.1);
+      }
+      .nav-button i {
+        color: white;
+        font-size: 32px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide">
+      <div class="shape-1"></div>
+      <div class="shape-2"></div>
+      <div class="shape-3"></div>
+      <div class="content">
+        <h1 class="title">Global TechStack in Engineering Department</h1>
+        <div class="tech-container">
+          <div class="tech-stack">
+            <div class="glass-panel">
+              <h2 class="panel-title">
+                <i class="material-icons">layers</i>
+                <span>Technology Stack</span>
+              </h2>
+              <div class="tech-categories">
+                <div class="tech-category">
+                  <h3 class="category-title">
+                    <i class="material-icons">code</i>
+                    <span>Frontend</span>
+                  </h3>
+                  <div class="tech-items">
+                    <div class="tech-item">React</div>
+                    <div class="tech-item">Vue.js</div>
+                    <div class="tech-item">Angular</div>
+                    <div class="tech-item">TypeScript</div>
+                    <div class="tech-item">Tailwind CSS</div>
+                  </div>
+                </div>
+                <div class="tech-category">
+                  <h3 class="category-title">
+                    <i class="material-icons">storage</i>
+                    <span>Backend</span>
+                  </h3>
+                  <div class="tech-items">
+                    <div class="tech-item">Node.js</div>
+                    <div class="tech-item">Java</div>
+                    <div class="tech-item">Python</div>
+                    <div class="tech-item">.NET</div>
+                    <div class="tech-item">GraphQL</div>
+                  </div>
+                </div>
+                <div class="tech-category">
+                  <h3 class="category-title">
+                    <i class="material-icons">cloud</i>
+                    <span>Infrastructure</span>
+                  </h3>
+                  <div class="tech-items">
+                    <div class="tech-item">AWS</div>
+                    <div class="tech-item">Azure</div>
+                    <div class="tech-item">Docker</div>
+                    <div class="tech-item">Kubernetes</div>
+                    <div class="tech-item">Terraform</div>
+                  </div>
+                </div>
+                <div class="tech-category">
+                  <h3 class="category-title">
+                    <i class="material-icons">storage</i>
+                    <span>Database & ORM</span>
+                  </h3>
+                  <div class="tech-items">
+                    <div class="tech-item">MySQL</div>
+                    <div class="tech-item">PostgreSQL</div>
+                    <div class="tech-item">MongoDB</div>
+                    <div class="tech-item">Redis</div>
+                    <div class="tech-item">Prisma</div>
+                    <div class="tech-item">Sequelize</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="gopro-highlight">
+            <div class="glass-panel">
+              <div class="gopro-content">
+                <div class="gopro-header">
+                  <div class="gopro-logo">GP</div>
+                  <h2 class="gopro-title">goPRO System</h2>
+                </div>
+                <div class="gopro-features">
+                  <div class="feature-item">
+                    <div class="feature-icon">
+                      <i class="material-icons">speed</i>
+                    </div>
+                    <div class="feature-text">
+                      <div class="feature-title">High Performance</div>
+                      Optimized for speed and scalability
+                    </div>
+                  </div>
+                  <div class="feature-item">
+                    <div class="feature-icon">
+                      <i class="material-icons">security</i>
+                    </div>
+                    <div class="feature-text">
+                      <div class="feature-title">Enterprise Security</div>
+                      End-to-end encryption and access control
+                    </div>
+                  </div>
+                  <div class="feature-item">
+                    <div class="feature-icon">
+                      <i class="material-icons">integration_instructions</i>
+                    </div>
+                    <div class="feature-text">
+                      <div class="feature-title">Seamless Integration</div>
+                      Compatible with existing systems
+                    </div>
+                  </div>
+                  <div class="feature-item">
+                    <div class="feature-icon">
+                      <i class="material-icons">analytics</i>
+                    </div>
+                    <div class="feature-text">
+                      <div class="feature-title">Advanced Analytics</div>
+                      Real-time insights and reporting
+                    </div>
+                  </div>
+                </div>
+                <div class="gopro-stats">
+                  <div class="stat-item">
+                    <div class="stat-value">98%</div>
+                    <div class="stat-label">Uptime</div>
+                  </div>
+                  <div class="stat-item">
+                    <div class="stat-value">15+</div>
+                    <div class="stat-label">Modules</div>
+                  </div>
+                  <div class="stat-item">
+                    <div class="stat-value">24/7</div>
+                    <div class="stat-label">Support</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="xx-timeline.html" class="nav-button">
+      <i class="material-icons">arrow_forward</i>
+    </a>
+  </body>
+</html>
