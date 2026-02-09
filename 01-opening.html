@@ -105,6 +105,24 @@
         .material-icons {
             font-size: 36px;
         }
+        .logo-box {
+            background: #ffffff;
+            padding: 20px 40px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+        .logo-box:hover {
+            transform: translateY(-5px);
+        }
+        .logo-img {
+            height: 70px;
+            width: auto;
+        }
         .accent-line {
             width: 180px;
             height: 6px;
@@ -121,6 +139,9 @@
         <div class="shape-3"></div>
         <div class="content">
             <div class="glass-panel">
+                <div class="logo-box">
+                    <img src="images/logo-aio.png" alt="Otsuka Logo" class="logo-img">
+                </div>
                 <h1 class="title">Final Presentation Otsuka Young Star</h1>
                 <div class="accent-line"></div>
                 <h2 class="subtitle">Engineering Department</h2>
